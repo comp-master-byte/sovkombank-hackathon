@@ -1,0 +1,67 @@
+.registerWrapper {
+    width: 600px;
+    height: auto;
+    box-shadow: 0 0 10px rgb(0, 55, 144);
+    border-radius: 10px;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+
+    .registerForm {
+        width: 80%;
+
+        .registerTitle {
+            color: rgb(0, 55, 144);
+            text-align: center;
+            margin-bottom: 30px;
+
+            .registerTitle__title {
+                margin-bottom: 5px;
+            }
+
+            .registerTitle__text {
+                color: rgba(0, 55, 144, .5);
+                text-align: center;
+            }
+        }
+
+        .inputsForm {
+
+            .inputsRow {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 15px;
+            }
+
+            .inputsForm__fio {
+                width: 65%;
+            }
+
+            .inputsForm__datePicker {
+                width: 33%;
+            }
+
+            .inputsForm__inputSmall {
+                width: 48%;
+            }
+        }
+
+        .signUp {
+            text-align: center;
+            margin-top: 30px;
+
+            .signUp__btn {
+                margin-bottom: 15px;
+            }
+
+            .backToLogin__btn {
+                font-size: 14px;
+                color: rgb(0, 55, 144);
+                cursor: pointer;
+                text-decoration: none;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,75 @@
+.loginWrapper {
+    width: 1200px;
+    height: 500px;
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0, 55, 144);
+    overflow: hidden;
+
+    .loginWrapper__logoImg {
+        align-self: center;
+        flex-basis: 50%;
+        border-right: 1px solid rgb(0, 55, 144);
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .loginForm {
+        display: flex;
+        justify-content: center;
+        flex-basis: 50%;
+        padding-top: 60px;
+
+        .innerForm {
+            width: 70%;
+
+            h1 {
+                color: rgb(0, 55, 144);
+                margin-bottom: 5px;
+            }
+
+            p {
+                color: rgba(0, 55, 144, .5);
+                margin-bottom: 50px;
+            }
+
+            .inputSection__input {
+                width: 100%;
+
+                &:first-child {
+                    margin-bottom: 20px;
+                }
+            }
+
+            .forgotPassword {
+                text-align: right;
+                color: rgb(0, 55, 144);
+                margin-bottom: 0;
+                font-size: 14px;
+                margin-top: 10px;
+            }
+
+            .signIn {
+                margin-top: 20px;
+                text-align: center;
+
+                .signIn__btn {
+                    width: 50%;
+                    background-color: rgb(0, 55, 144);
+                    margin-bottom: 15px;
+                }
+
+                .createAccount {
+                    font-size: 14px;
+                    color: rgb(0, 55, 144);
+                    cursor: pointer;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+}

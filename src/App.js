@@ -1,12 +1,16 @@
 import React from "react";
-import { Theme, presetGpnDefault } from '@consta/uikit/Theme';
-import { Button } from '@consta/uikit/Button';
+import "./styles/main.scss";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage/HomePage.jsx";
+import RegisterPage from "./pages/RegisterPage/RegisterPage.jsx"
 
 function App() {
+
     return (
-        <Theme preset={presetGpnDefault}>
-            <Button label="Кнопка" />
-        </Theme>      
+        <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/register" element={<RegisterPage />} />
+        </Routes>
     );
 }
 
