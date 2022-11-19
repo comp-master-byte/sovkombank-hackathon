@@ -2,12 +2,22 @@ import React from "react";
 import styles from "./Register.module.scss";
 import { TextField } from "@consta/uikit/TextField";
 import { DatePicker } from "@consta/uikit/DatePicker";
+import { Loader } from '@consta/uikit/Loader';
 import { Button } from "@consta/uikit/Button";
 import { useRegister } from "../../hooks/useRegister";
 import { Link } from "react-router-dom";
 
 const Register = () => {
-    const { registerForm, handleChange, handleSubmit, birthDate, setBirthDate } = useRegister();
+    const {
+        registerForm,
+        handleChange,
+        handleSubmit,
+        birthDate,
+        setBirthDate,
+        isLoading,
+        error,
+        isSuccessRegister
+    } = useRegister();
 
     return (
         <div className={styles.registerWrapper}>
@@ -67,18 +77,22 @@ const Register = () => {
                             label="Пароль"
                         />
                     </div>
-                    <div className={styles.signUp}>
-                        <Button
-                            form="default"
-                            view="primary"
-                            label="Зарегестрироваться"
-                            size="m"
-                            className={styles.signUp__btn}
-                        />
-                        <div className={styles.backToLogin}>
-                            <Link to="/" className={styles.backToLogin__btn}>Вернуться назад</Link>
+                    {isLoading || isSuccessRegister
+                        ? <Loader size="m" />
+                        :
+                        <div className={styles.signUp}>
+                            <Button
+                                form="default"
+                                view="primary"
+                                label="Зарегестрироваться"
+                                size="m"
+                                className={styles.signUp__btn}
+                            />
+                            <div className={styles.backToLogin}>
+                                <Link to="/" className={styles.backToLogin__btn}>Вернуться назад</Link>
+                            </div>
                         </div>
-                    </div>
+                    }
                 </main>
             </form>
         </div>

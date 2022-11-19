@@ -2,12 +2,13 @@ import React from "react";
 import styles from "./Login.module.scss";
 import { useLogin } from "../../hooks/useLogin";
 import { TextField } from "@consta/uikit/TextField";
+import { Loader } from '@consta/uikit/Loader';
 import { Button } from "@consta/uikit/Button";
 import { Link } from "react-router-dom";
 import logo from "../../images/logo.png";
 
 const Login = () => {
-    const { loginForm, handleChange, handleSubmit } = useLogin();
+    const { loginForm, handleChange, handleSubmit, user } = useLogin();
 
     return (
         <div className={styles.loginWrapper}>
@@ -20,10 +21,10 @@ const Login = () => {
                     <p>Введите свои данные чтобы войти</p>
                     <div className={styles.inputSection}>
                         <TextField
-                            value={loginForm.login}
+                            value={loginForm.phone}
                             onChange={handleChange}
                             className={styles.inputSection__input}
-                            name="login"
+                            name="phone"
                             label="Номер телефона"
                         />
                         <TextField
@@ -37,21 +38,27 @@ const Login = () => {
                     <p className={styles.forgotPassword}>
                         Забыли свой пароль?
                     </p>
-                    <div className={styles.signIn}>
-                        <Button
-                            form="default"
-                            view="primary"
-                            label="Войти"
-                            size="m"
-                            className={styles.signIn__btn}
-                        />
-                        <div>
-                            <Link to="/register" className={styles.createAccount}>Создать аккаунт</Link>
+                    {user
+                        ? <div className={styles.signIn}>
+                            <Loader size="m" />
                         </div>
-                    </div>
+                        :
+                        <div className={styles.signIn}>
+                            <Button
+                                form="default"
+                                view="primary"
+                                label="Войти"
+                                size="m"
+                                className={styles.signIn__btn}
+                            />
+                            <div>
+                                <Link to="/register" className={styles.createAccount}>Создать аккаунт</Link>
+                            </div>
+                        </div>
+                    }
                 </div>
-            </form>
-        </div>
+            </form >
+        </div >
     )
 }
 
