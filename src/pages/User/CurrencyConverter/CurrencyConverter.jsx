@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./CurrencyConverter.module.scss";
 import { useCurrencyConverter } from "./hooks/useCurrencyConverter";
 import { TextField } from '@consta/uikit/TextField';
 import { Button } from '@consta/uikit/Button';
 import pointer from "../../../images/pointer.svg";
+import history from "../../../images/history.svg";
 
 const CurrencyConverter = () => {
     const {
@@ -14,23 +15,65 @@ const CurrencyConverter = () => {
         toggleToLeft,
         toggleToRight,
         price,
-        toExchange
+        toExchange,
+        dispatch,
+        fetchAllCurrency,
+        config,
+        showDepositInput,
+        toggleDeposit,
+        showWithdrawInput,
+        toggleWithdraw
     } = useCurrencyConverter();
+
+    useEffect(() => {
+        dispatch(fetchAllCurrency(config))
+    }, [config])
 
     return (
         <div className={styles.wrapper}>
             <section className={styles.bill}>
                 <h1>Счет: {currency.map(cur => <span>{cur.accountAmount.toFixed(0)}{cur.currencyName}    </span>)}</h1>
             </section>
+            <div className={styles.actionBtns}>
+                <Button
+                    label="Пополнить"
+                    onClick={toggleDeposit}
+                />
+                {showDepositInput ?
+                    <TextField
+                        type="text"
+                        placeholder="Поплнить"
+                    />
+                    : <></>
+                }
+                <Button
+                    label="Снять"
+                    className={styles.actionBtns__take}
+                    onClick={toggleWithdraw}
+                />
+                {showWithdrawInput ?
+                    <TextField
+                        type="text"
+                        placeholder="Снять"
+                    />
+                    : <></>
+                }
+                <div className={styles.justFlex}>
+                    <div>
+                        <img src={history} alt="" />
+                    </div>
+                    <div style={{ marginLeft: 10 }}>История операций</div>
+                </div>
+            </div>
             <div className={styles.title}>Конвертер валют</div>
             <section className={styles.section}>
                 <div className={styles.leftSectionColumn}>
-                    <p>Хочу получить ₽</p>
+                    <p>Хочу обменять ₽</p>
                     <TextField
                         onChange={handleChange}
                         value={money.toGetAmount && (price * money.toGetAmount).toFixed(0)}
                         type="text"
-                        placeholder="0"
+                        placeholder="0 ₽"
                         name="toExchangeAmount"
                         className={styles.leftSectionColumn__input}
                     />
@@ -51,25 +94,25 @@ const CurrencyConverter = () => {
                             onClick={toggleToRight}
                         />
                     </div>
-                    <p>Хочу обменять $</p>
+                    <p>Хочу получить $</p>
 
                     <TextField
                         onChange={handleChange}
                         value={money.toGetAmount}
                         type="text"
-                        placeholder="0"
+                        placeholder="0 $"
                         name="toGetAmount"
                         className={styles.leftSectionColumn__input}
                     />
                 </div>
                 <div className={styles.rightSectionColumn}>
                     <p>Сумма обмена</p>
-                    <div className={styles.rightSectionColumn__amount}>{money.toGetAmount && (price * money.toGetAmount).toFixed(0)} ₽</div>
+                    <div className={styles.rightSectionColumn__amount}>{money.toGetAmount && (price * money.toGetAmount).toFixed(0) || 0} ₽</div>
                     <div className={styles.rightSectionColumn__img}>
                         <img src={pointer} alt="" />
                     </div>
                     <p>Полученная сумма</p>
-                    <div className={styles.rightSectionColumn__amount}>{money.toGetAmount} ₽</div>
+                    <div className={styles.rightSectionColumn__amount}>{money.toGetAmount || 0} $</div>
                     <div className={styles.footer}>
                         <Button
                             view="primary"

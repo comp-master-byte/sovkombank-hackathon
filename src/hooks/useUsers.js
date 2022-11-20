@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllUsers, setBlockUser } from "../store/async-actions/users";
 import { useSearch } from "./useSearch";
@@ -26,14 +26,13 @@ export const useUsers = () => {
         dispatch(setBlockUser(user.id, blocked, config));
     }
 
-    useEffect(() => {
-        dispatch(fetchAllUsers(config))
-    }, [])
-
     return {
         filterUsers,
         searchUsersQuery,
         handleSearchQuery,
-        blockUser
+        blockUser,
+        config,
+        dispatch,
+        fetchAllUsers
     }
 }

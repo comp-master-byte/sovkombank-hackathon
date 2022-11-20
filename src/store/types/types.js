@@ -20,3 +20,4 @@ export const SET_GRAPH = "SET_GRAPH";
 export const CLEAR_GRAPH = "CLEAR_GRAPH";
 export const GRAPH_IS_LOADING = "GRAPH_IS_LOADING";
 export const GRAPH_LOADED = "GRAPH_LOADED";
+export const SET_ACCOUNT_INFO = "SET_ACCOUNT_INFO";

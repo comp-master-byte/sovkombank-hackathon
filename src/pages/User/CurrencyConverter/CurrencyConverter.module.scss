@@ -74,3 +74,22 @@
     font-weight: 500;
     margin-bottom: 20px;
 }
+
+.actionBtns {
+    margin: 20px 0;
+    display: flex;
+}
+
+.actionBtns__take {
+    background-color: rgb(0, 32, 51);
+    margin: 0px 20px;
+
+    &:hover {
+        background-color: rgb(0, 32, 51);
+    }
+}
+
+.justFlex {
+    display: flex;
+    align-items: center;
+}

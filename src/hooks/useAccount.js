@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {fetchAllUsersRegistration, registrationIsAcceptUser} from "../store/async-actions/users";
 import { useSearch } from "./useSearch";
@@ -29,16 +29,15 @@ export const useAccount = () => {
         dispatch(registrationIsAcceptUser(requestId, false, config))
     };
 
-    useEffect(() => {
-        dispatch(fetchAllUsersRegistration(config))
-    }, [])
-
     return {
         requests,
         usersQuery,
         handleAcceptUser,
         handleRejectUser,
         searchQuery, 
-        handleSearchQuery
+        handleSearchQuery,
+        config,
+        dispatch,
+        fetchAllUsersRegistration
     }
 }

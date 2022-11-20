@@ -6,6 +6,7 @@ import Chart from 'chart.js/auto';
 import { useGraph } from "./hooks/useGraph";
 import { Button } from '@consta/uikit/Button';
 import { Loader } from '@consta/uikit/Loader';
+import stonks from "../../../images/stonks.svg";
 
 Chart.register(CategoryScale)
 
@@ -58,6 +59,19 @@ const Graph = () => {
                     <Line data={data} />
                 </div>
             }
+            <main className={styles.main}>
+                <h1 style={{ marginBottom: 40 }}>Прогноз курса USDRUB</h1>
+                <div className={styles.innerMain}>
+                    <div style={{ marginRight: 30 }}>
+                        <img src={stonks} alt="" />
+                    </div>
+                    <div>
+                        <h2 style={{ marginBottom: 20 }}><span style={{ color: "#DEE4E8" }}>Стратегия:</span> Покупать</h2>
+                        <div style={{ fontWeight: 700, fontSize: 24, marginBottom: 20 }}>Ожидается рост курса USD относительно RUB </div>
+                        <div style={{ fontSize: 12 }}>*Прогноз на основе исторических данных, не является инвестиционной рекомендацией</div>
+                    </div>
+                </div>
+            </main>
         </div>
     )
 }

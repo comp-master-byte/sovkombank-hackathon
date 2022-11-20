@@ -22,7 +22,7 @@ const Register = () => {
         <div className={styles.registerWrapper}>
             <form onSubmit={handleSubmit} className={styles.registerForm}>
                 <div className={styles.registerTitle}>
-                    <h1 className={styles.registerTitle__title}>Регистарция</h1>
+                    <h1 className={styles.registerTitle__title}>Регистрация</h1>
                     <p className={styles.registerTitle__text}>Введите информацию о себе чтобы зарегестрироваться в системе</p>
                 </div>
                 <main className={styles.inputsForm}>

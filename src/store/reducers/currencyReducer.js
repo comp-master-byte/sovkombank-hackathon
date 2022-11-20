@@ -1,11 +1,12 @@
-import { SET_CURRENCY, SET_PRICE, EXCHAGE_BEGIN, EXCHAGE_END, SET_GRAPH, CLEAR_GRAPH, GRAPH_IS_LOADING, GRAPH_LOADED } from "../types/types";
+import { SET_CURRENCY, SET_PRICE, EXCHAGE_BEGIN, EXCHAGE_END, SET_GRAPH, CLEAR_GRAPH, GRAPH_IS_LOADING, GRAPH_LOADED, SET_ACCOUNT_INFO } from "../types/types";
 
 const initialState = {
     currency: [],
     price: "",
     isExchanged: false,
     graph: null,
-    isGraphLoading: false
+    isGraphLoading: false,
+    accountInfo: null
 }
 
 export const currencyReducer = (state = initialState, action) => {
@@ -26,6 +27,8 @@ export const currencyReducer = (state = initialState, action) => {
             return {...state, isGraphLoading: true}
         case GRAPH_LOADED:
             return {...state, isGraphLoading: false}
+        case SET_ACCOUNT_INFO:
+            return {...state, accountInfo: action.payload}
         default:
             return state;
     }

@@ -41,3 +41,25 @@
         }
     }
 }
+
+.rowBlock {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+
+    .rowBlockItem {
+        width: 300px;
+    }
+}
+
+.columnBlock {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+
+    .leftColumnBlockItem {
+        margin-bottom: 20px;
+        width: 300px;
+    }
+}

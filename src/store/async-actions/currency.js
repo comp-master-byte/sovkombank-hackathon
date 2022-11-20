@@ -1,5 +1,5 @@
 import axios from "axios";
-import { exchangeBegin, exchangeEnd, graphIsLoading, graphLoaded, setCurrency, setGraph, setPrice } from "../action-creators/currencyReducer";
+import { exchangeBegin, exchangeEnd, graphIsLoading, graphLoaded, setAccountInfo, setCurrency, setGraph, setPrice } from "../action-creators/currencyReducer";
 
 export const fetchAllCurrency = (config) => {
     return async dispatch => {
@@ -44,6 +44,17 @@ export const fetchGraphData = (target, source, config, date = "week") => {
             const response = await axios.get(`http://194.58.123.176:8000/api/currency/frame/${date}?target=${target}&source=${source}`,config);
             dispatch(setGraph(response.data));
             dispatch(graphLoaded());
+        } catch(error) {
+            console.log(error);
+        }
+    }
+}
+
+export const fetchAccountInfo = (userId, config) => {
+    return async dispatch => {
+        try {
+            const response = await axios.get(`http://194.58.123.176:8000/api/account/${userId}`,config);
+            dispatch(setAccountInfo(response.data));
         } catch(error) {
             console.log(error);
         }

@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Users.module.scss";
 import CardsList from "../../../components/Common/CardsList/CardsList.jsx";
 import { useUsers } from "../../../hooks/useUsers";
 import { TextField } from '@consta/uikit/TextField';
 
 const Users = () => {
-    const { filterUsers, searchUsersQuery, handleSearchQuery } = useUsers();
+    const { filterUsers, searchUsersQuery, handleSearchQuery, config, dispatch, fetchAllUsers } = useUsers();
+
+    useEffect(() => {
+        dispatch(fetchAllUsers(config));
+    }, [config])
+
     return (
-        <div>
+        <div className={styles.usersWrapper}>
             <TextField
                 type="text"
                 placeholder="Поиск..."
