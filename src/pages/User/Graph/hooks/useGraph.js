@@ -17,25 +17,47 @@ export const useGraph = () => {
     const graphData = useSelector(state => state.currency.graph);
     const isGraphLoading = useSelector(state => state.currency.isGraphLoading);
 
+    const [newValue, setNewValue] = useState("")
     const [graphDate, setGraphDate] = useState([]);
     const [graphPrice, setGraphPrice] = useState([]);
+
+    const handleChange = ({value}) => {
+        setNewValue(value);
+        if(value.length === 3) {
+            setGraphDate([]);
+            setGraphPrice([]);
+            dispatch(fetchGraphData(value, "RUB", config, "week"))
+        }
+    };
 
     const fetchGraphForWeek = () => {
         setGraphDate([]);
         setGraphPrice([]);
-        dispatch(fetchGraphData("USD", "RUB", config, "week"))
+        if(newValue.length === 3) {
+            dispatch(fetchGraphData("USD", "RUB", config, "week"))
+        } else {
+            dispatch(fetchGraphData(newValue, "RUB", config, "week"))
+        }
     }
 
     const fetchGraphForYear = () => {
         setGraphDate([]);
         setGraphPrice([]);
-        dispatch(fetchGraphData("USD", "RUB", config, "year"))
+        if(newValue.length === 3) {
+            dispatch(fetchGraphData(newValue, "RUB", config, "year"))
+        } else {
+            dispatch(fetchGraphData("USD", "RUB", config, "year"))
+        }
     }
 
     const fetchGraphFor3Month = () => {
         setGraphDate([]);
         setGraphPrice([]);
-        dispatch(fetchGraphData("USD", "RUB", config, "3month"))
+        if(newValue.length === 3) {
+            dispatch(fetchGraphData(newValue, "RUB", config, "3month"))
+        } else {
+            dispatch(fetchGraphData("USD", "RUB", config, "3month"))
+        }
     }
 
     useEffect(() => {
@@ -62,6 +84,8 @@ export const useGraph = () => {
         fetchGraphForWeek,
         fetchGraphForYear,
         fetchGraphFor3Month,
-        isGraphLoading
+        isGraphLoading,
+        newValue,
+        handleChange
     }
 }

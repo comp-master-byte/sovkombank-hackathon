@@ -7,6 +7,7 @@ import { useGraph } from "./hooks/useGraph";
 import { Button } from '@consta/uikit/Button';
 import { Loader } from '@consta/uikit/Loader';
 import stonks from "../../../images/stonks.svg";
+import { TextField } from "@consta/uikit/TextField";
 
 Chart.register(CategoryScale)
 
@@ -17,7 +18,9 @@ const Graph = () => {
         fetchGraphForWeek,
         fetchGraphForYear,
         fetchGraphFor3Month,
-        isGraphLoading
+        isGraphLoading,
+        newValue,
+        handleChange
     } = useGraph();
 
     const data = {
@@ -50,6 +53,12 @@ const Graph = () => {
                     className={styles.section__btn}
                     label="За год"
                     onClick={fetchGraphForYear}
+                />
+                <TextField
+                    type="text"
+                    onChange={handleChange}
+                    value={newValue}
+                    placeholder="Введите валюту, пример: EUR"
                 />
             </section>
             {isGraphLoading
