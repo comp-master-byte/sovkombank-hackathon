@@ -17,6 +17,10 @@
     .headerLinks__link {
         text-decoration: none;
         color: rgb(0, 55, 144);
+
+        &:first-child {
+            margin-right: 20px;
+        }
     }
 
     .headerRightColumn {
@@ -32,6 +36,7 @@
 
             .profile__btn {
                 margin-left: 10px;
+                background-color: rgb(0, 55, 144);
             }
         }
     }

@@ -22,7 +22,8 @@ const UserLayout = () => {
             <div className={styles.container}>
                 <header className={styles.header}>
                     <div className={styles.headerLeftColumn}>
-                        <Link className={styles.headerLinks__link} path="/user/currencyConverter">Конвертер валют</Link>
+                        <Link className={styles.headerLinks__link} to="/user/currencyConverter">Конвертер валют</Link>
+                        <Link className={styles.headerLinks__link} to="/user/graph">График</Link>
                     </div>
                     <div className={styles.headerRightColumn}>
                         <div className={styles.profile}>

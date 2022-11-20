@@ -16,3 +16,7 @@ export const SET_CURRENCY = "SET_CURRENCY";
 export const SET_PRICE = "SET_PRICE";
 export const EXCHAGE_BEGIN = "EXCHAGE_BEGIN";
 export const EXCHAGE_END = "EXCHAGE_END";
+export const SET_GRAPH = "SET_GRAPH";
+export const CLEAR_GRAPH = "CLEAR_GRAPH";
+export const GRAPH_IS_LOADING = "GRAPH_IS_LOADING";
+export const GRAPH_LOADED = "GRAPH_LOADED";

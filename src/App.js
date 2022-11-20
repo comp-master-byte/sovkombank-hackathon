@@ -8,6 +8,7 @@ import AdminLayout from "./components/AdminLayout/AdminLayout";
 import Users from "./pages/Admin/Users/Users";
 import CurrencyConverter from "./pages/User/CurrencyConverter/CurrencyConverter";
 import UserLayout from "./components/UserLayout/UserLayout";
+import Graph from "./pages/User/Graph/Graph";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
             </Route>
             <Route path="/user" element={<UserLayout />}>
                 <Route path="/user/currencyConverter" element={<CurrencyConverter />} />
+                <Route path="/user/graph" element={<Graph />} />
             </Route>
         </Routes>
     );
