@@ -1,0 +1,38 @@
+.layoutWrapper {
+    padding-top: 40px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.header {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .headerLinks__link {
+        text-decoration: none;
+        color: rgb(0, 55, 144);
+    }
+
+    .headerRightColumn {
+        display: flex;
+        align-items: center;
+
+        .profile {
+            min-width: 100px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgb(0, 55, 144);
+            color: rgb(0, 55, 144);
+
+            .profile__btn {
+                margin-left: 10px;
+            }
+        }
+    }
+}

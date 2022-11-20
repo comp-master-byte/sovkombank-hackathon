@@ -4,7 +4,7 @@ import { TextField } from "@consta/uikit/TextField";
 import { DatePicker } from "@consta/uikit/DatePicker";
 import { Loader } from '@consta/uikit/Loader';
 import { Button } from "@consta/uikit/Button";
-import { useRegister } from "../../hooks/useRegister";
+import { useRegister } from "../../../hooks/useRegister";
 import { Link } from "react-router-dom";
 
 const Register = () => {
@@ -15,7 +15,6 @@ const Register = () => {
         birthDate,
         setBirthDate,
         isLoading,
-        error,
         isSuccessRegister
     } = useRegister();
 

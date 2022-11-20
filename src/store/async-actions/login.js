@@ -7,6 +7,8 @@ export const submitLoginData = (config) => {
             dispatch(loadingLogin());
             const response = await axios.get('http://194.58.123.176:8000/api/users/login', config);
             dispatch(successLogin(response.data));
+            const toString = JSON.stringify(response.data);
+            localStorage.setItem("userData", toString);
         } catch(error) {
             dispatch(errorLogin("ошибка"))
         }

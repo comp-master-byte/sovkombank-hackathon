@@ -2,30 +2,39 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {fetchAllUsersRegistration, registrationIsAcceptUser} from "../store/async-actions/users";
 import { useSearch } from "./useSearch";
+import cookie from "js-cookie";
+
+const TOKEN = cookie.get("token");
+
+const config = {
+    headers: {
+        "Authorization": `Basic ${TOKEN}`
+    }
+}
 
 export const useAccount = () => {
     const dispatch = useDispatch();
-    const users = useSelector(state => state.users.users);
+    const requests = useSelector(state => state.users.requests);
 
     const [searchQuery, setSearchQuery] = useState("");
 
-    const usersQuery = useSearch(users, searchQuery);
+    const usersQuery = useSearch(requests, searchQuery);
 
     const handleSearchQuery = ({value}) => setSearchQuery(value);
 
-    const handleAcceptUser = (userId) => {
-        dispatch(registrationIsAcceptUser(userId, true))
+    const handleAcceptUser = (requestId) => {
+        dispatch(registrationIsAcceptUser(requestId, true, config))
     };
-    const handleRejectUser = (userId) => {
-        dispatch(registrationIsAcceptUser(userId, false))
+    const handleRejectUser = (requestId) => {
+        dispatch(registrationIsAcceptUser(requestId, false, config))
     };
 
     useEffect(() => {
-        dispatch(fetchAllUsersRegistration())
+        dispatch(fetchAllUsersRegistration(config))
     }, [])
 
     return {
-        users,
+        requests,
         usersQuery,
         handleAcceptUser,
         handleRejectUser,

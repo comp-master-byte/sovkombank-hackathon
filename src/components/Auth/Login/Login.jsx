@@ -1,14 +1,14 @@
 import React from "react";
 import styles from "./Login.module.scss";
-import { useLogin } from "../../hooks/useLogin";
+import { useLogin } from "../../../hooks/useLogin";
 import { TextField } from "@consta/uikit/TextField";
 import { Loader } from '@consta/uikit/Loader';
 import { Button } from "@consta/uikit/Button";
 import { Link } from "react-router-dom";
-import logo from "../../images/logo.png";
+import logo from "../../../images/logo.png";
 
 const Login = () => {
-    const { loginForm, handleChange, handleSubmit, user } = useLogin();
+    const { loginForm, handleChange, handleSubmit, isLoading } = useLogin();
 
     return (
         <div className={styles.loginWrapper}>
@@ -38,7 +38,7 @@ const Login = () => {
                     <p className={styles.forgotPassword}>
                         Забыли свой пароль?
                     </p>
-                    {user
+                    {isLoading
                         ? <div className={styles.signIn}>
                             <Loader size="m" />
                         </div>

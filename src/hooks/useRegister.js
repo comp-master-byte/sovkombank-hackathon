@@ -29,7 +29,7 @@ export const useRegister = () => {
             setTimeout(() => {
                 navigate("/");
                 dispatch(hideSuccessRegisterInformer());
-            }, 3000)
+            }, 1000)
         }
     }
 

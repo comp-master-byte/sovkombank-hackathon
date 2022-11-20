@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux/es/exports";
 import { Informer } from '@consta/uikit/Informer';
-import Register from "../../components/Register/Register";
+import Register from "../../components/Auth/Register/Register";
 import styles from "./RegisterPage.module.scss";
 import classNames from "classnames";
 

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { clearUserData } from "../store/action-creators/login";
 import { submitLoginData } from "../store/async-actions/login";
+import cookie from "js-cookie";
 
 export const useLogin = () => {
     const navigate = useNavigate();
@@ -22,21 +22,25 @@ export const useLogin = () => {
             }
         }
         dispatch(submitLoginData(config));
+        cookie.set("token", loginFormToBase64);
     }
 
     useEffect(() => {
-        if(user && !isLoading) {
-            setTimeout(() => {
+        const token = cookie.get("token");
+        if(token) {
+            if(user.role === "USER") {
+                navigate("/user/currencyConverter")
+            } else {
                 navigate("/admin/account")
-            } , 1000)
-            return () => dispatch(clearUserData());
+            }
         }
-    }, [user, isLoading])
+    }, [user])
 
     return {
         loginForm,
         handleChange,
         handleSubmit,
-        user
+        user,
+        isLoading
     }
 }
